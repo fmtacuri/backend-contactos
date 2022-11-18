@@ -23,7 +23,7 @@ import lombok.experimental.FieldDefaults;
 public class PersonJpa {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   UUID id;
 
   String nombre;
