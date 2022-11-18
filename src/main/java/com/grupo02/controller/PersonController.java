@@ -1,5 +1,6 @@
 package com.grupo02.controller;
 
+import com.grupo02.service.PersonService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -17,9 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class PersonController {
 
+  PersonService personService;
+
   @GetMapping("/all")
   ResponseEntity<Object> getAllRegister() {
-    return new ResponseEntity<>(HttpStatus.OK);
+
+    return new ResponseEntity<>(personService.getAllPerson(), HttpStatus.OK);
   }
 
 }
