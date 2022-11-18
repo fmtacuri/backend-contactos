@@ -1,6 +1,5 @@
 package com.grupo02.dto.jpa;
 
-import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +22,8 @@ import lombok.experimental.FieldDefaults;
 public class PersonJpa {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  UUID id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  long id;
 
   String nombre;
   String apellido;

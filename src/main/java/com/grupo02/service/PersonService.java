@@ -4,7 +4,6 @@ import com.grupo02.dto.PersonDto;
 import com.grupo02.dto.jpa.PersonJpa;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -27,9 +26,9 @@ public class PersonService {
     return response;
   }
 
-  public UUID savePerson(PersonDto personDto) {
-    PersonJpa personJpa = PersonJpa.builder().nombre(personDto.getNombre())
-        .apellido(personDto.getApellido()).telefono(personDto.getTelefono()).build();
+  public long savePerson(PersonDto personDto) {
+    PersonJpa personJpa = PersonJpa.builder().nombre(personDto.getNombre()).apellido(personDto.getApellido())
+        .telefono(personDto.getTelefono()).build();
 
     return repository.save(personJpa).getId();
   }
