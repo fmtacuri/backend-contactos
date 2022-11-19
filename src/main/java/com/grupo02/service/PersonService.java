@@ -26,10 +26,10 @@ public class PersonService {
     return response;
   }
 
-  public long savePerson(PersonDto personDto) {
+  public PersonJpa savePerson(PersonDto personDto) {
     PersonJpa personJpa = PersonJpa.builder().nombre(personDto.getNombre()).apellido(personDto.getApellido())
         .telefono(personDto.getTelefono()).build();
 
-    return repository.save(personJpa).getId();
+    return repository.save(personJpa);
   }
 }
