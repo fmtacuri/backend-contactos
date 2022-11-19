@@ -2,8 +2,10 @@ package com.grupo02.service;
 
 import com.grupo02.dto.PersonDto;
 import com.grupo02.dto.jpa.PersonJpa;
+import com.grupo02.dto.jpa.PersonJpa.PersonJpaBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -27,9 +29,18 @@ public class PersonService {
   }
 
   public PersonJpa savePerson(PersonDto personDto) {
-    PersonJpa personJpa = PersonJpa.builder().nombre(personDto.getNombre()).apellido(personDto.getApellido())
-        .telefono(personDto.getTelefono()).build();
+    PersonJpaBuilder builder = PersonJpa.builder();
+    builder.nombre(personDto.getNombre());
+    builder.apellido(personDto.getApellido());
+    builder.telefono(personDto.getTelefono());
 
-    return repository.save(personJpa);
+    if (!Objects.isNull(personDto.getId())) {
+      builder.id(personDto.getId());
+    }
+    return repository.save(builder.build());
+  }
+
+  public void deletePerson(long id) {
+    repository.deleteById(id);
   }
 }

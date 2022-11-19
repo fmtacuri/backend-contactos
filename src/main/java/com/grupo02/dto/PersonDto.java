@@ -14,7 +14,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PersonDto {
 
-  long id;
+  Long id;
   String nombre;
   String apellido;
   String telefono;
